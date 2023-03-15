@@ -1,24 +1,68 @@
-﻿namespace CalculatorMobProgrammingTemplate;
+﻿using System.Data;
+
+namespace CalculatorMobProgrammingTemplate;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    private bool _cannotCompute;
 
-	public MainPage()
+    public MainPage()
 	{
 		InitializeComponent();
-	}
+        InputOutput.Text = "Test";
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    private void Button_OnClicked(object sender, EventArgs e)
+    {
+        if (sender is Button btn)
+        {
+            if (_cannotCompute)
+            {
+                InputOutput.Text = btn.Text;
+                _cannotCompute = false;
+            }
+            else
+            {
+                InputOutput.Text += btn.Text;
+            }
+        }
+    }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private void ClearButton_OnClicked(object sender, EventArgs e)
+    {
+
+        if (sender is Button btn)
+        {
+            InputOutput.Text = string.Empty;
+        }
+    }
+
+    private void BackspaceButton_OnClicked(object sender, EventArgs e)
+    {
+        if (sender is Button btn)
+        {
+            InputOutput.Text = InputOutput.Text.Substring(0, InputOutput.Text.Length - 1);
+        }
+    }
+
+    private void CalculateButton_OnClicked(object sender, EventArgs e)
+    {
+        if (sender is Button btn)
+        {
+            var maths = InputOutput.Text;
+            try
+            {
+                var results = Convert.ToString(new DataTable().Compute(maths, null));
+                InputOutput.Text = results;
+
+            }
+            catch (Exception exception)
+            {
+                InputOutput.Text =  "Kan inte räkna ut...";
+                _cannotCompute = true;
+            }
+        }
+    }
 }
 
