@@ -6,9 +6,11 @@
     xmlns:local="clr-namespace:CalculatorMobProgrammingTemplate"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Calculator Deluxe"
+    <ShellContent 
+        Title="✨✨📱✨✨ Calculator Deluxe ✨✨📱✨✨"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage">
+    </ShellContent>
+    
 
 </Shell>

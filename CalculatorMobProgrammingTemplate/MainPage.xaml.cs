@@ -9,8 +9,6 @@ public partial class MainPage : ContentPage
     public MainPage()
 	{
 		InitializeComponent();
-        InputOutput.Text = "Test";
-
     }
 
     private void Button_OnClicked(object sender, EventArgs e)
@@ -31,9 +29,12 @@ public partial class MainPage : ContentPage
 
     private void ClearButton_OnClicked(object sender, EventArgs e)
     {
-
         if (sender is Button btn)
         {
+            if (_cannotCompute)
+            {
+                _cannotCompute = false;
+            }
             InputOutput.Text = string.Empty;
         }
     }
@@ -42,7 +43,7 @@ public partial class MainPage : ContentPage
     {
         if (sender is Button btn)
         {
-            InputOutput.Text = InputOutput.Text.Substring(0, InputOutput.Text.Length - 1);
+            InputOutput.Text = InputOutput.Text[..^1];
         }
     }
 

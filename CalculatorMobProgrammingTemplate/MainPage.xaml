@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CalculatorMobProgrammingTemplate.MainPage">
+  
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -38,7 +39,8 @@
         <Button Grid.Row="3" Grid.Column="3" Text="-" Clicked="Button_OnClicked"/>
         <Button Grid.Row="2" Grid.Column="3" Text="*" Clicked="Button_OnClicked"/>
         <Button Grid.Row="1" Grid.Column="3" Text="/" Clicked="Button_OnClicked"/>
-        <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="BACKSPACE" Clicked="BackspaceButton_OnClicked"/>
+        <Button Grid.Row="1" Grid.Column="1" Text="⌫" Clicked="BackspaceButton_OnClicked"/>
+        <Button Grid.Row="1" Grid.Column="2" Text="." Clicked="Button_OnClicked"/>
         <Button Grid.Row="1" Grid.Column="0" Text="C" Clicked="ClearButton_OnClicked"/>
 
 
